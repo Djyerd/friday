@@ -1,11 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>friday</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ganba | Profile</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --border: rgba(148, 163, 184, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at top right, #1e293b 0%, var(--bg) 45%);
+      color: var(--text);
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+      padding: 24px;
+    }
+
+    .profile {
+      width: min(680px, 100%);
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    }
+
+    .name {
+      font-size: clamp(1.8rem, 3vw, 2.3rem);
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+
+    .section {
+      margin-top: 18px;
+    }
+
+    .label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .value,
+    .list {
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .list li {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 6px 10px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 20px 0;
+    }
+  </style>
 </head>
 <body>
-    <h1>friday</h1>
+  <main class="profile">
+    <h1 class="name">Ganba</h1>
+    <span class="tag">Personal Profile</span>
+
+    <section class="section">
+      <p class="label">Hobbies</p>
+      <ul class="list">
+        <li>Playing basketball</li>
+        <li>Watching anime</li>
+        <li>Listening to music</li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <p class="label">Favorite Anime</p>
+      <p class="value">Hunter x Hunter</p>
+    </section>
+
+    <section class="section">
+      <p class="label">Favorite Basketball Player</p>
+      <p class="value">Kobe Bryant</p>
+    </section>
+
+    <section class="section">
+      <p class="label">Favorite Artists</p>
+      <ul class="list">
+        <li>Kendrick Lamar</li>
+        <li>Drake</li>
+        <li>Frank Ocean</li>
+      </ul>
+    </section>
+  </main>
 </body>
-</html>     
+</html>
