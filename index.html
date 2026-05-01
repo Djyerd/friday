@@ -1,137 +1,1161 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ganba | Profile</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --border: rgba(148, 163, 184, 0.25);
-    }
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="ガンバ — フロントエンドエンジニア。シンプルで心地よいWeb体験をつくります。"
+    />
+    <title>ガンバ | Front-end Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0c;
+        --bg-elevated: #12121a;
+        --card: #14141c;
+        --card-border: rgba(168, 85, 247, 0.12);
+        --text: #e8e8ed;
+        --text-muted: #9898a8;
+        --purple: #a855f7;
+        --blue: #3b82f6;
+        --gradient: linear-gradient(135deg, #a855f7 0%, #6366f1 45%, #3b82f6 100%);
+        --radius: 18px;
+        --radius-sm: 12px;
+        --glow: 0 0 40px rgba(168, 85, 247, 0.35);
+      }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
 
-    body {
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: radial-gradient(circle at top right, #1e293b 0%, var(--bg) 45%);
-      color: var(--text);
-      font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-      padding: 24px;
-    }
+      html {
+        scroll-behavior: smooth;
+      }
 
-    .profile {
-      width: min(680px, 100%);
-      background: linear-gradient(160deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
-    }
+      body {
+        margin: 0;
+        font-family: "Outfit", system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
 
-    .name {
-      font-size: clamp(1.8rem, 3vw, 2.3rem);
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      margin-bottom: 8px;
-    }
+      .jp {
+        font-family: "M PLUS Rounded 1c", "Outfit", sans-serif;
+      }
 
-    .tag {
-      display: inline-block;
-      font-size: 0.85rem;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      padding: 6px 10px;
-      border-radius: 999px;
-      margin-bottom: 20px;
-    }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    .section {
-      margin-top: 18px;
-    }
+      img {
+        max-width: 100%;
+        display: block;
+      }
 
-    .label {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-    }
+      .container {
+        width: min(1200px, 100% - 40px);
+        margin-inline: auto;
+      }
 
-    .value,
-    .list {
-      font-size: 1rem;
-      line-height: 1.65;
-    }
+      /* Header */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        background: rgba(10, 10, 12, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--card-border);
+      }
 
-    .list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 14px 0;
+      }
 
-    .list li {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 6px 10px;
-      background: rgba(255, 255, 255, 0.02);
-    }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 800;
+        font-size: 1.15rem;
+        letter-spacing: 0.02em;
+      }
 
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border), transparent);
-      margin: 20px 0;
-    }
-  </style>
-</head>
-<body>
-  <main class="profile">
-    <h1 class="name">Ganba</h1>
-    <span class="tag">Personal Profile</span>
+      .logo .jp {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
 
-    <section class="section">
-      <p class="label">Hobbies</p>
-      <ul class="list">
-        <li>Playing basketball</li>
-        <li>Watching anime</li>
-        <li>Listening to music</li>
-      </ul>
-    </section>
+      .logo-star {
+        width: 14px;
+        height: 14px;
+        background: var(--gradient);
+        clip-path: polygon(50% 0%, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0% 50%, 35% 35%);
+      }
 
-    <div class="divider"></div>
+      .nav {
+        display: none;
+        align-items: center;
+        gap: 28px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+      }
 
-    <section class="section">
-      <p class="label">Favorite Anime</p>
-      <p class="value">Hunter x Hunter</p>
-    </section>
+      .nav a:hover {
+        color: var(--text);
+      }
 
-    <section class="section">
-      <p class="label">Favorite Basketball Player</p>
-      <p class="value">Kobe Bryant</p>
-    </section>
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
 
-    <section class="section">
-      <p class="label">Favorite Artists</p>
-      <ul class="list">
-        <li>Kendrick Lamar</li>
-        <li>Drake</li>
-        <li>Frank Ocean</li>
-      </ul>
-    </section>
-  </main>
-</body>
+      .social-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        color: var(--text-muted);
+        transition: color 0.2s, border-color 0.2s, transform 0.2s;
+      }
+
+      .social-btn:hover {
+        color: var(--purple);
+        border-color: rgba(168, 85, 247, 0.35);
+        transform: translateY(-2px);
+      }
+
+      .social-btn svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      .btn-cta {
+        display: none;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        background: var(--gradient);
+        color: #fff;
+        box-shadow: var(--glow);
+        border: none;
+        cursor: pointer;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .btn-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 50px rgba(168, 85, 247, 0.45);
+      }
+
+      @media (min-width: 900px) {
+        .nav {
+          display: flex;
+        }
+        .btn-cta {
+          display: inline-flex;
+        }
+      }
+
+      @media (max-width: 899px) {
+        .header-inner {
+          flex-wrap: wrap;
+        }
+        .nav-mobile {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px 20px;
+          justify-content: center;
+          padding-bottom: 8px;
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          color: var(--text-muted);
+        }
+      }
+
+      @media (min-width: 900px) {
+        .nav-mobile {
+          display: none;
+        }
+      }
+
+      main {
+        padding-top: 88px;
+        padding-bottom: 64px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        padding: 24px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        margin: 0 0 20px;
+        color: var(--text);
+      }
+
+      .section-title .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--purple);
+        box-shadow: 0 0 12px var(--purple);
+      }
+
+      .section-title .diamond {
+        width: 10px;
+        height: 10px;
+        background: var(--gradient);
+        transform: rotate(45deg);
+        border-radius: 2px;
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        gap: 28px;
+        grid-template-columns: 1fr;
+        align-items: center;
+        margin-bottom: 36px;
+      }
+
+      @media (min-width: 960px) {
+        .hero {
+          grid-template-columns: 1fr 1fr;
+          min-height: 420px;
+        }
+      }
+
+      .hero-card {
+        padding: 36px 32px;
+        overflow: hidden;
+      }
+
+      .tagline {
+        display: inline-block;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        color: var(--purple);
+        margin-bottom: 16px;
+      }
+
+      .hero h1 {
+        margin: 0 0 8px;
+        font-size: clamp(2.5rem, 6vw, 3.75rem);
+        font-weight: 800;
+        line-height: 1.1;
+      }
+
+      .hero h1 .jp {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        filter: drop-shadow(0 0 24px rgba(168, 85, 247, 0.4));
+      }
+
+      .hero-role {
+        font-size: 0.85rem;
+        font-weight: 600;
+        letter-spacing: 0.28em;
+        color: var(--text-muted);
+        margin: 0 0 20px;
+      }
+
+      .hero-desc {
+        margin: 0 0 28px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        max-width: 440px;
+      }
+
+      .hero-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        background: var(--gradient);
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        box-shadow: var(--glow);
+        transition: transform 0.2s;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 24px;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        background: transparent;
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        cursor: pointer;
+        transition: border-color 0.2s, background 0.2s;
+      }
+
+      .btn-outline:hover {
+        border-color: var(--purple);
+        background: rgba(168, 85, 247, 0.08);
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 280px;
+        border-radius: var(--radius);
+        background: linear-gradient(160deg, #1a1030 0%, #0d0d14 50%, #0a0a12 100%);
+        border: 1px solid var(--card-border);
+        overflow: hidden;
+      }
+
+      .hero-visual img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .hero-visual-fallback {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+      }
+
+      .hero-visual-fallback svg {
+        width: 100%;
+        height: auto;
+        max-height: 340px;
+        opacity: 0.95;
+      }
+
+      /* Mid grid */
+      .grid-mid {
+        display: grid;
+        gap: 20px;
+        margin-bottom: 24px;
+      }
+
+      @media (min-width: 1024px) {
+        .grid-mid {
+          grid-template-columns: 1fr 1.1fr 1fr;
+          align-items: start;
+        }
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      @media (min-width: 520px) {
+        .skills-grid {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+
+      .skill-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+        font-size: 0.65rem;
+        font-weight: 600;
+        color: var(--text-muted);
+      }
+
+      .skill-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: var(--radius-sm);
+        display: grid;
+        place-items: center;
+        background: var(--bg-elevated);
+        border: 1px solid var(--card-border);
+      }
+
+      .skill-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      .works-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .works-head .section-title {
+        margin: 0;
+      }
+
+      .link-all {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--purple);
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .link-all:hover {
+        text-decoration: underline;
+      }
+
+      .works-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .work-card {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 14px;
+        padding: 14px;
+        border-radius: var(--radius-sm);
+        background: var(--bg-elevated);
+        border: 1px solid var(--card-border);
+        transition: border-color 0.2s;
+      }
+
+      .work-card:hover {
+        border-color: rgba(168, 85, 247, 0.3);
+      }
+
+      .work-thumb {
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 1;
+        background: linear-gradient(145deg, #2a2040, #12121a);
+      }
+
+      .work-thumb span {
+        display: grid;
+        place-items: center;
+        height: 100%;
+        font-size: 1.5rem;
+      }
+
+      .work-body h3 {
+        margin: 0 0 6px;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+
+      .work-body p {
+        margin: 0 0 10px;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .chip {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(168, 85, 247, 0.12);
+        color: var(--purple);
+        font-weight: 600;
+      }
+
+      .about-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .about-top {
+        display: grid;
+        gap: 20px;
+      }
+
+      @media (min-width: 520px) {
+        .about-top {
+          grid-template-columns: 1fr 100px;
+        }
+      }
+
+      .about-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-size: 0.85rem;
+      }
+
+      .about-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: var(--text-muted);
+      }
+
+      .about-list strong {
+        color: var(--text);
+        min-width: 7.5rem;
+        font-weight: 600;
+      }
+
+      .about-list svg {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+        color: var(--purple);
+      }
+
+      .moon-inset {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-inline: auto;
+        background: radial-gradient(circle at 30% 30%, #c4b5fd, #5b21b6 45%, #1e1033 70%);
+        border: 2px solid rgba(168, 85, 247, 0.4);
+        box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5), 0 0 30px rgba(168, 85, 247, 0.25);
+      }
+
+      blockquote.quote {
+        margin: 0;
+        padding: 16px 18px;
+        border-radius: var(--radius-sm);
+        border-left: 3px solid var(--purple);
+        background: rgba(168, 85, 247, 0.06);
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        font-style: italic;
+      }
+
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        padding-left: 4px;
+        border-left: 2px solid rgba(168, 85, 247, 0.25);
+        margin-left: 8px;
+      }
+
+      .tl-item {
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: -11px;
+        top: 4px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--gradient);
+        box-shadow: 0 0 10px var(--purple);
+      }
+
+      .tl-item h4 {
+        margin: 0 0 4px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--purple);
+      }
+
+      .tl-item p {
+        margin: 0;
+        font-size: 0.82rem;
+        color: var(--text-muted);
+      }
+
+      /* Bottom grid */
+      .grid-bottom {
+        display: grid;
+        gap: 20px;
+      }
+
+      @media (min-width: 900px) {
+        .grid-bottom {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .love-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .love-item {
+        padding: 16px;
+        border-radius: var(--radius-sm);
+        background: var(--bg-elevated);
+        border: 1px solid var(--card-border);
+        text-align: center;
+      }
+
+      .love-item .emoji {
+        font-size: 1.75rem;
+        margin-bottom: 8px;
+      }
+
+      .love-item h4 {
+        margin: 0 0 6px;
+        font-size: 0.85rem;
+      }
+
+      .love-item p {
+        margin: 0;
+        font-size: 0.72rem;
+        color: var(--text-muted);
+      }
+
+      .currently {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .currently ul {
+        margin: 0;
+        padding-left: 1.1rem;
+        color: var(--text-muted);
+        font-size: 0.88rem;
+      }
+
+      .currently li {
+        margin-bottom: 10px;
+      }
+
+      .cassette {
+        margin-top: 20px;
+        max-width: 160px;
+        margin-left: auto;
+      }
+
+      .connect-list {
+        list-style: none;
+        margin: 0 0 24px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .connect-list a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 0.88rem;
+        color: var(--text-muted);
+        transition: color 0.2s;
+      }
+
+      .connect-list a:hover {
+        color: var(--purple);
+      }
+
+      .connect-list svg {
+        width: 20px;
+        height: 20px;
+        color: var(--purple);
+        flex-shrink: 0;
+      }
+
+      .connect-signoff {
+        display: flex;
+        align-items: flex-end;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .handwritten {
+        font-family: "M PLUS Rounded 1c", cursive;
+        font-size: 2.25rem;
+        font-weight: 800;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        line-height: 1;
+      }
+
+      /* Footer */
+      .footer {
+        border-top: 1px solid var(--card-border);
+        padding: 40px 0 32px;
+        margin-top: 20px;
+      }
+
+      .footer-grid {
+        display: grid;
+        gap: 28px;
+        align-items: start;
+      }
+
+      @media (min-width: 900px) {
+        .footer-grid {
+          grid-template-columns: 1.2fr 1fr 1fr;
+          align-items: center;
+        }
+      }
+
+      .footer-brand p {
+        margin: 10px 0 0;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      .footer-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px 22px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        color: var(--text-muted);
+        justify-content: center;
+      }
+
+      .footer-nav a:hover {
+        color: var(--text);
+      }
+
+      .footer-meta {
+        text-align: right;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      .barcode {
+        margin-top: 12px;
+        display: flex;
+        gap: 2px;
+        justify-content: flex-end;
+      }
+
+      .barcode span {
+        display: block;
+        width: 3px;
+        height: 28px;
+        background: var(--text-muted);
+        opacity: 0.35;
+      }
+
+      .barcode span:nth-child(odd) {
+        height: 36px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <a href="#home" class="logo">
+          <span class="jp">ガンバ</span>
+          <span class="logo-star" aria-hidden="true"></span>
+        </a>
+        <nav class="nav" aria-label="メイン">
+          <a href="#home">HOME</a>
+          <a href="#about">ABOUT</a>
+          <a href="#works">WORKS</a>
+          <a href="#skills">SKILLS</a>
+          <a href="#blog">BLOG</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+        <div class="header-actions">
+          <a href="https://github.com/soiod-dev" class="social-btn" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+          <a href="https://instagram.com/soiod.dev" class="social-btn" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="mailto:soiod.dev@gmail.com" class="social-btn" aria-label="メール">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+          <a href="#contact" class="btn-cta">LET'S TALK <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <nav class="nav-mobile container" aria-label="モバイル">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT</a>
+        <a href="#works">WORKS</a>
+        <a href="#skills">SKILLS</a>
+        <a href="#blog">BLOG</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        <section id="home" class="hero">
+          <div class="card hero-card">
+            <span class="tagline">&lt;/ FRONT-END DEVELOPER &gt;</span>
+            <h1><span class="jp">ガンバ</span></h1>
+            <p class="hero-role">FRONT-END DEVELOPER</p>
+            <p class="hero-desc jp">
+              Web制作が大好きなフロントエンドエンジニア。ユーザーの「使いやすい！」を大切に、シンプルで心地よいWeb体験をつくります。
+            </p>
+            <div class="hero-btns">
+              <a href="#works" class="btn-primary">VIEW MY WORKS <span aria-hidden="true">→</span></a>
+              <a href="#about" class="btn-outline">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                ABOUT ME
+              </a>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <!-- ヒーロー画像を置く場合: assets/hero.png を追加し、下の img のコメントを外してください -->
+            <!-- <img src="assets/hero.png" alt="" width="600" height="700" /> -->
+            <div class="hero-visual-fallback">
+              <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="">
+                <defs>
+                  <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#a855f7"/>
+                    <stop offset="100%" style="stop-color:#3b82f6"/>
+                  </linearGradient>
+                  <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#1e1038"/>
+                    <stop offset="100%" style="stop-color:#0a0a12"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="360" fill="url(#sky)"/>
+                <g opacity="0.35">
+                  <rect x="40" y="200" width="28" height="120" fill="#4c1d95"/>
+                  <rect x="75" y="170" width="32" height="150" fill="#5b21b6"/>
+                  <rect x="115" y="210" width="24" height="110" fill="#6d28d9"/>
+                  <rect x="280" y="185" width="30" height="135" fill="#4c1d95"/>
+                  <rect x="318" y="160" width="36" height="160" fill="#5b21b6"/>
+                  <rect x="200" y="195" width="22" height="125" fill="#7c3aed"/>
+                </g>
+                <ellipse cx="200" cy="300" rx="180" ry="40" fill="url(#g1)" opacity="0.15"/>
+                <circle cx="320" cy="80" r="36" fill="#c4b5fd" opacity="0.12"/>
+                <path d="M200 80 C260 60 300 120 280 200 C265 260 220 280 200 300 C180 280 135 260 120 200 C100 120 140 60 200 80Z" fill="#1f1833" stroke="url(#g1)" stroke-width="2"/>
+                <ellipse cx="200" cy="175" rx="55" ry="70" fill="#2d2640"/>
+                <path d="M155 130 Q200 95 245 130 Q250 160 230 185 Q200 200 170 185 Q150 160 155 130Z" fill="#0f0f14"/>
+              </svg>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid-mid">
+          <section id="skills" class="card">
+            <h2 class="section-title"><span class="dot" aria-hidden="true"></span> SKILLS</h2>
+            <div class="skills-grid">
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#e34f26"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.62L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg></div>
+                HTML
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#1572B6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm17.09 4.413L3.4 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.33 4.171 5.428 1.428 5.953-1.488z"/></svg></div>
+                CSS
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#F7DF1E"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.982-3.911c-2.309 0-4.578-.645-6.48-1.875l-.81 1.53c2.145 1.2 4.5 1.8 6.9 1.875.45.015.9-.015 1.35-.06-.45-.06-.885-.15-1.32-.27-.6-.18-1.17-.42-1.71-.72l-.81 1.53c.54.27 1.11.48 1.71.66.435.12.87.21 1.32.27-.45.045-.9.075-1.35.06z"/></svg></div>
+                JavaScript
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#3178C6"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.84 3.84 0 0 0-.643-.361 5.097 5.097 0 0 0-.717-.26 5.566 5.566 0 0 0-.75-.204 4.675 4.675 0 0 0-.862-.093c-.75 0-1.345.165-1.785.495-.44.33-.66.785-.66 1.365 0 .435.087.795.26 1.08.178.285.42.525.726.72.307.19.66.375 1.062.555.404.18.835.375 1.293.585.465.21.885.435 1.26.675.375.24.696.51.963.81.267.295.474.645.621 1.05.148.4.222.87.222 1.41 0 .705-.135 1.335-.405 1.89-.27.555-.66 1.02-1.17 1.395-.51.375-1.125.66-1.845.855-.72.195-1.53.292-2.43.292-.6 0-1.155-.045-1.665-.135-.51-.09-.975-.21-1.395-.36-.42-.15-.795-.33-1.125-.54V18.52c.39.33.855.615 1.395.855.54.24 1.155.36 1.845.36.555 0 1.035-.075 1.44-.225.405-.15.735-.36.99-.63.255-.27.435-.585.54-.945.105-.36.157-.75.157-1.17 0-.45-.09-.825-.27-1.125-.18-.3-.435-.57-.765-.81-.33-.24-.72-.465-1.17-.675-.45-.21-.945-.435-1.485-.675-.54-.24-1.035-.51-1.485-.81-.45-.3-.825-.66-1.125-1.08-.3-.42-.45-.945-.45-1.575 0-.63.12-1.185.36-1.665.24-.48.585-.885 1.035-1.215.45-.33.99-.585 1.62-.765.63-.18 1.335-.27 2.115-.27zm-15.113.188h11.565v2.73h-4.17v12.58h-3.18v-12.58h-4.215z"/></svg></div>
+                TypeScript
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#61DAFB"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.23 12.004a2.236 2.236 0 0 1-2.235 2.236 2.236 2.236 0 0 1-2.236-2.236 2.236 2.236 0 0 1 2.235-2.236 2.236 2.236 0 0 1 2.236 2.236zm2.648-10.69c-1.346 0-3.107.96-4.888 2.622-1.78-1.653-3.542-2.602-4.887-2.602-.41 0-.783.093-1.106.278-1.375.793-1.683 3.904-.947 8.465.333 2.076.833 4.322 1.434 6.584-.6 2.262-1.1 4.508-1.434 6.584-.736 4.561-.428 7.672.947 8.465.323.185.696.278 1.106.278 1.345 0 3.107-.96 4.888-2.621 1.78 1.653 3.542 2.602 4.887 2.602.41 0 .783-.093 1.106-.278 1.374-.793 1.683-3.904.947-8.465-.334-2.076-.834-4.322-1.434-6.584.6-2.262 1.1-4.508 1.434-6.584.736-4.561.428-7.672-.947-8.465-.323-.185-.696-.278-1.106-.278zm-15.113 1.38h.022c.344.008.866.44 1.54 1.26a18.18 18.18 0 0 0 2.646 2.57c-.39.958-.68 1.89-.87 2.787-.04.18-.074.36-.104.54a22.53 22.53 0 0 1-2.8-.96 22.53 22.53 0 0 1-2.08-1.04c-.25-.72-.458-1.4-.607-2.04-.16-.68-.25-1.29-.25-1.82 0-.52.09-1.01.25-1.4.1-.26.25-.52.44-.75.19-.23.41-.43.64-.58.23-.15.47-.25.72-.3zm13.18 0c.25.05.49.15.72.3.23.15.45.35.64.58.19.23.34.49.44.75.16.39.25.88.25 1.4 0 .53-.09 1.14-.25 1.82-.15.64-.36 1.32-.61 2.04a22.53 22.53 0 0 1-2.08 1.04 22.53 22.53 0 0 1-2.8.96c-.03-.18-.064-.36-.104-.54-.19-.897-.48-1.83-.87-2.787a18.18 18.18 0 0 0 2.646-2.57c.674-.82 1.196-1.252 1.54-1.26zm-8.22 7.172c.657.086 1.32.198 1.98.33a18.18 18.18 0 0 0-.762 2.12c-.39.02-.78.03-1.17.03-.39 0-.78-.01-1.17-.03a18.18 18.18 0 0 0-.762-2.12c.66-.132 1.323-.244 1.98-.33zm2.24 0c.66.086 1.323.198 1.98.33a18.18 18.18 0 0 1 .762 2.12c-.39.02-.78.03-1.17.03-.39 0-.78-.01-1.17-.03a18.18 18.18 0 0 1-.762-2.12c.657-.132 1.32-.244 1.98-.33z"/></svg></div>
+                React
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#fff"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 0 1-.364.033C7.442.346 4.25 2.185 2.228 5.012a11.875 11.875 0 0 0-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.654.54.364.042.477.052.65.052.176 0 .289-.01.463-.052 1.056-.118 1.878-.29 2.657-.54 4.349-1.403 7.557-5.189 8.209-9.695.096-.659.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.859-8.292-8.208-9.695a12.597 12.597 0 0 0-2.499-.454A33.067 33.067 0 0 0 11.573 0zm2.063 1.312c1.125.019 2.232.289 3.281.792 3.045 1.402 5.227 4.38 5.61 7.688.096.659.108.854.108 1.747 0 .893-.012 1.088-.108 1.747-.383 3.308-2.565 6.286-5.61 7.688-1.05.503-2.156.773-3.281.792-.176.003-.31.004-.358.004-.047 0-.182-.001-.358-.004-1.125-.019-2.232-.289-3.282-.792-3.044-1.402-5.226-4.38-5.609-7.688-.096-.659-.108-.854-.108-1.747 0-.893.012-1.088.108-1.747.383-3.308 2.565-6.286 5.609-7.688 1.05-.503 2.157-.773 3.282-.792.176-.003.31-.004.358-.004z"/></svg></div>
+                Next.js
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#CF649A"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c6.628 0 12 5.373 12 12s-5.372 12-12 12S0 18.627 0 12 5.372 0 12 0zm3.258 18.174c-.87.432-1.947.648-3.258.648-1.31 0-2.388-.216-3.258-.648-.87-.432-1.305-.972-1.305-1.62 0-.432.108-.864.324-1.296.216-.432.54-.81.972-1.134.432-.324.972-.54 1.62-.648v3.24c0 .216.108.324.324.324.216 0 .324-.108.324-.324v-3.24c.648.108 1.188.324 1.62.648.432.324.756.702.972 1.134.216.432.324.864.324 1.296 0 .648-.435 1.188-1.305 1.62z"/></svg></div>
+                Sass
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#38B2AC"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624-1.157-1.074-2.518-2.456-5.492-2.456zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.091 2.538 2.473 5.512 2.473 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.845 13.382 9.484 12 6.51 12c-3.2 0-5.2 1.6-6 4.8z"/></svg></div>
+                Tailwind
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#F05032"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.599-.719.721-1.889.721-2.609 0-.719-.719-.719-1.878 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg></div>
+                Git
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon"><svg viewBox="0 0 24 24" fill="none"><path fill="#F24E1E" d="M8 24a4 4 0 0 1-4-4V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H8z"/><path fill="#FF7262" d="M16 4H8v16h8V4z"/><path fill="#A259FF" d="M4 8h4v8H4V8z"/><path fill="#1ABCFE" d="M16 8h4v4h-4V8z"/><path fill="#0ACF83" d="M16 16h4v4h-4v-4z"/></svg></div>
+                Figma
+              </div>
+              <div class="skill-item">
+                <div class="skill-icon" style="color:#007ACC"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.15 2.587L18.21.21a1.49 1.49 0 0 0-1.65.444l-9.34 12.9-4.28-3.227a1.5 1.5 0 0 0-1.92.23L.58 10.99a1.5 1.5 0 0 0-.002 1.84l3.6 4.575a1.5 1.5 0 0 0 2.31-.02L23.35 4.157a1.5 1.5 0 0 0-.2-1.57zm-14.4 14.15l-2.57-3.26 12.66-17.46 3.24 1.17-13.33 19.55z"/></svg></div>
+                VS Code
+              </div>
+            </div>
+          </section>
+
+          <section id="works" class="card">
+            <div class="works-head">
+              <h2 class="section-title"><span class="dot" aria-hidden="true"></span> WORKS</h2>
+              <a href="#works" class="link-all">VIEW ALL →</a>
+            </div>
+            <div class="works-list">
+              <article class="work-card">
+                <div class="work-thumb"><span>☕</span></div>
+                <div class="work-body">
+                  <h3>Cafe Website</h3>
+                  <p class="jp">コーヒーとコードの雰囲気を伝えるランディングページです。</p>
+                  <p style="font-size:0.75rem;color:var(--purple);margin:0 0 8px;font-weight:600">Good coffee, Good code.</p>
+                  <div class="chips"><span class="chip">Web Design</span><span class="chip">HTML, CSS, JavaScript</span></div>
+                </div>
+              </article>
+              <article class="work-card">
+                <div class="work-thumb"><span>24°</span></div>
+                <div class="work-body">
+                  <h3>Weather App</h3>
+                  <p class="jp">APIから天気を取得し、シンプルに表示するアプリです。</p>
+                  <div class="chips"><span class="chip">React</span><span class="chip">API</span></div>
+                </div>
+              </article>
+              <article class="work-card">
+                <div class="work-thumb"><span>✓</span></div>
+                <div class="work-body">
+                  <h3>ToDo List</h3>
+                  <p class="jp">ローカルでタスク管理できるミニマルなToDoです。</p>
+                  <div class="chips"><span class="chip">JavaScript</span></div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <div class="about-stack">
+            <section id="about" class="card">
+              <h2 class="section-title"><span class="dot" aria-hidden="true"></span> ABOUT ME</h2>
+              <div class="about-top">
+                <ul class="about-list">
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <div><strong>Name</strong> Gamba</div>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <div><strong>Birthday</strong> 2005.12.15</div>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <div><strong>Location</strong> Tokyo, Japan</div>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                    <div><strong>Hobby</strong> <span class="jp">バスケ / アニメ / 音楽 / コーディング</span></div>
+                  </li>
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                    <div><strong>Favorite Artists</strong> Kendrick Lamar / Drake / The Weeknd</div>
+                  </li>
+                </ul>
+                <div class="moon-inset" role="img" aria-label="月夜のイメージ"></div>
+              </div>
+              <blockquote class="quote jp">コードは、アイデアをカタチにする魔法。日々アップデート中。</blockquote>
+            </section>
+
+            <section class="card">
+              <h2 class="section-title"><span class="dot" aria-hidden="true"></span> EXPERIENCE</h2>
+              <div class="timeline">
+                <div class="tl-item">
+                  <h4>2024.04 — Present</h4>
+                  <p class="jp">フロントエンド学習（HTML/CSS/JS）と実践アプリ制作に注力。</p>
+                </div>
+                <div class="tl-item">
+                  <h4>2023.07 — 2024.03</h4>
+                  <p class="jp">Progate・Udemyで学習をスタート。</p>
+                </div>
+                <div class="tl-item">
+                  <h4>2022 — Present</h4>
+                  <p class="jp">趣味のデザイン・コーディング。UI改善を中心に。</p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="grid-bottom">
+          <section class="card">
+            <h2 class="section-title"><span class="diamond" aria-hidden="true"></span> WHAT I LOVE</h2>
+            <div class="love-grid">
+              <div class="love-item">
+                <div class="emoji" aria-hidden="true">🏀</div>
+                <h4>Basketball</h4>
+                <p class="jp">シュートの音が好き。</p>
+              </div>
+              <div class="love-item">
+                <div class="emoji" aria-hidden="true">📺</div>
+                <h4>Anime</h4>
+                <p class="jp">週末はアニメタイム。</p>
+              </div>
+              <div class="love-item">
+                <div class="emoji" aria-hidden="true">🎵</div>
+                <h4>Music</h4>
+                <p class="jp">作業用プレイリスト。</p>
+              </div>
+              <div class="love-item">
+                <div class="emoji" aria-hidden="true">💻</div>
+                <h4>Coding</h4>
+                <p class="jp">UIをいじるのが楽しい。</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="currently" class="card currently">
+            <h2 class="section-title"><span class="dot" aria-hidden="true"></span> CURRENTLY...</h2>
+            <ul class="jp">
+              <li>Next.js と TypeScript を学習中。</li>
+              <li>UI/UX デザインを学習中。</li>
+              <li>オリジナルポートフォリオを制作中。</li>
+              <li>筋トレ中 💪</li>
+            </ul>
+            <svg class="cassette" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="8" y="20" width="184" height="80" rx="8" fill="#2a2048" stroke="#a855f7" stroke-width="2"/>
+              <rect x="24" y="36" width="152" height="48" rx="4" fill="#1a1430"/>
+              <circle cx="52" cy="60" r="14" fill="#0a0a12" stroke="#6366f1" stroke-width="2"/>
+              <circle cx="148" cy="60" r="14" fill="#0a0a12" stroke="#6366f1" stroke-width="2"/>
+              <rect x="78" y="48" width="44" height="24" rx="2" fill="#a855f7" opacity="0.4"/>
+              <text x="100" y="66" text-anchor="middle" fill="#e8e8ed" font-size="11" font-family="M PLUS Rounded 1c, sans-serif" font-weight="700">ガンバ!</text>
+            </svg>
+          </section>
+
+          <section id="contact" class="card">
+            <h2 class="section-title"><span class="diamond" aria-hidden="true"></span> LET'S CONNECT</h2>
+            <ul class="connect-list">
+              <li>
+                <a href="mailto:soiod.dev@gmail.com">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  soiod.dev@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/soiod-dev" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  github.com/soiod-dev
+                </a>
+              </li>
+              <li>
+                <a href="https://instagram.com/soiod.dev" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                  @soiod.dev
+                </a>
+              </li>
+            </ul>
+            <div class="connect-signoff">
+              <span class="handwritten jp">ガンバ!</span>
+              <span style="font-size:1.75rem" aria-hidden="true">✈️</span>
+              <span style="font-size:1.25rem;opacity:0.7" aria-hidden="true">😊</span>
+            </div>
+          </section>
+        </div>
+
+        <section id="blog" class="container" style="margin-top: 28px; text-align: center; scroll-margin-top: 96px">
+          <p class="jp" style="color: var(--text-muted); font-size: 0.88rem; margin: 0">
+            Blog は近日公開予定です。
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="jp">ガンバ</span>
+            <span class="logo-star" aria-hidden="true"></span>
+          </div>
+          <p class="jp">コードで、未来をちょっと良くする。</p>
+        </div>
+        <nav class="footer-nav" aria-label="フッター">
+          <a href="#home">HOME</a>
+          <a href="#about">ABOUT</a>
+          <a href="#works">WORKS</a>
+          <a href="#skills">SKILLS</a>
+          <a href="#blog">BLOG</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+        <div class="footer-meta">
+          <p>© 2026 <span class="jp">ガンバ</span>. All rights reserved.</p>
+          <div class="barcode" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
