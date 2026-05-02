@@ -651,6 +651,7 @@
       }
 
       .love-item {
+        display: block;
         padding: 16px;
         border-radius: var(--radius-sm);
         background: var(--bg-elevated);
@@ -671,11 +672,6 @@
       .love-item:focus-visible {
         outline: 2px solid var(--purple);
         outline-offset: 2px;
-      }
-
-      .love-item.is-active {
-        border-color: rgba(168, 85, 247, 0.5);
-        background: rgba(168, 85, 247, 0.1);
       }
 
       .love-item .hint {
@@ -701,70 +697,6 @@
         margin: 0;
         font-size: 0.72rem;
         color: var(--text-muted);
-      }
-
-      .love-detail {
-        margin-top: 16px;
-        padding: 18px 20px;
-        border-radius: var(--radius-sm);
-        background: var(--bg-elevated);
-        border: 1px solid rgba(168, 85, 247, 0.2);
-      }
-
-      .love-detail[hidden] {
-        display: none;
-      }
-
-      .love-detail h3 {
-        margin: 0 0 12px;
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        color: var(--purple);
-      }
-
-      .love-detail dl {
-        margin: 0;
-        font-size: 0.82rem;
-        color: var(--text-muted);
-      }
-
-      .love-detail dt {
-        margin-top: 10px;
-        font-weight: 600;
-        color: var(--text);
-        font-size: 0.75rem;
-      }
-
-      .love-detail dt:first-child {
-        margin-top: 0;
-      }
-
-      .love-detail dd {
-        margin: 4px 0 0;
-        padding-left: 0;
-      }
-
-      .love-detail ul {
-        margin: 0;
-        padding-left: 1.15rem;
-        color: var(--text-muted);
-        font-size: 0.82rem;
-      }
-
-      .love-detail li {
-        margin-bottom: 6px;
-      }
-
-      .love-detail li:last-child {
-        margin-bottom: 0;
-      }
-
-      .love-detail .sub {
-        display: block;
-        margin-top: 4px;
-        font-size: 0.72rem;
-        opacity: 0.85;
       }
 
       .currently {
@@ -1144,35 +1076,58 @@
           <section class="card">
             <h2 class="section-title"><span class="diamond" aria-hidden="true"></span> WHAT I LOVE</h2>
             <p class="jp" style="margin: -8px 0 14px; font-size: 0.78rem; color: var(--text-muted)">
-              カードをタップするとおすすめが表示されます。
+              各カードを開くと、別のタブで趣味のことをもう少し詳しく書いたページが開きます。
             </p>
             <div class="love-grid" role="group" aria-label="趣味">
-              <button type="button" class="love-item" data-love="basketball" aria-expanded="false" aria-controls="love-detail-panel" id="love-btn-basketball">
+              <a
+                class="love-item"
+                href="love-detail.html?topic=basketball"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Basketball — 詳細を別のタブで開く"
+              >
                 <div class="emoji" aria-hidden="true">🏀</div>
                 <h4>Basketball</h4>
-                <p class="jp">バスケットボールをすることが好き。</p>
-                <span class="hint">タップで表示</span>
-              </button>
-              <button type="button" class="love-item" data-love="anime" aria-expanded="false" aria-controls="love-detail-panel" id="love-btn-anime">
+                <p class="jp">チームプレーとNBA観戦。コートでも観戦でも、流れが変わる瞬間が好きです。</p>
+                <span class="hint">別タブで詳しく見る</span>
+              </a>
+              <a
+                class="love-item"
+                href="love-detail.html?topic=anime"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Anime — 詳細を別のタブで開く"
+              >
                 <div class="emoji" aria-hidden="true">📺</div>
                 <h4>Anime</h4>
-                <p class="jp">週末はアニメタイム。</p>
-                <span class="hint">タップで表示</span>
-              </button>
-              <button type="button" class="love-item" data-love="music" aria-expanded="false" aria-controls="love-detail-panel" id="love-btn-music">
+                <p class="jp">週末の定番。世界観に浸って、作画や音楽の気合いの入ったカットに唸ります。</p>
+                <span class="hint">別タブで詳しく見る</span>
+              </a>
+              <a
+                class="love-item"
+                href="love-detail.html?topic=music"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Music — 詳細を別のタブで開く"
+              >
                 <div class="emoji" aria-hidden="true">🎵</div>
                 <h4>Music</h4>
-                <p class="jp">作業用プレイリスト。</p>
-                <span class="hint">タップで表示</span>
-              </button>
-              <button type="button" class="love-item" data-love="coding" aria-expanded="false" aria-controls="love-detail-panel" id="love-btn-coding">
+                <p class="jp">作業・移動・夜のリラックス用にプレイリストを分けて聴いています。</p>
+                <span class="hint">別タブで詳しく見る</span>
+              </a>
+              <a
+                class="love-item"
+                href="love-detail.html?topic=coding"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Coding — 詳細を別のタブで開く"
+              >
                 <div class="emoji" aria-hidden="true">💻</div>
                 <h4>Coding</h4>
-                <p class="jp">UIをいじるのが楽しい。</p>
-                <span class="hint">タップで表示</span>
-              </button>
+                <p class="jp">UIの見た目と動きがきれいに揃ったときの達成感がやめられません。</p>
+                <span class="hint">別タブで詳しく見る</span>
+              </a>
             </div>
-            <div id="love-detail-panel" class="love-detail" role="region" aria-labelledby="love-detail-title" hidden></div>
           </section>
 
           <section id="currently" class="card currently">
@@ -1259,76 +1214,5 @@
       </div>
     </footer>
 
-    <script>
-      (function () {
-        var panel = document.getElementById("love-detail-panel");
-        var buttons = document.querySelectorAll(".love-item[data-love]");
-        var activeKey = null;
-
-        /** ここを編集して、自分の推しチーム・アニメ・曲などに差し替えてください */
-        var LOVE_HTML = {
-          basketball:
-            '<h3 id="love-detail-title">Basketball — おすすめ</h3>' +
-            "<dl>" +
-            "<dt>推しチーム</dt><dd>San Antonio Spurs</dd>" +
-            "<dt>推し選手</dt><dd>Kobe Bryant</dd>" +
-            "</dl>",
-          anime:
-            '<h3 id="love-detail-title">Anime — おすすめ</h3>' +
-            "<ul class=\"jp\">" +
-            "<li><strong>HUNTER×HUNTER（ハンター×ハンター）</strong> — 念能力バトルと友情の物語。何度でも見返したくなる。</li>" +
-            "</ul>",
-          music:
-            '<h3 id="love-detail-title">Music — おすすめ</h3>' +
-            "<ul>" +
-            "<li><strong>J. Cole</strong> — 「Wet Dreamz」<span class=\"sub jp\">（アルバム『2014 Forest Hills Drive』収録）</span></li>" +
-            "</ul>",
-          coding:
-            '<h3 id="love-detail-title">Coding — よく見るもの</h3>' +
-            "<ul class=\"jp\">" +
-            "<li>MDN Web Docs / Can I use</li>" +
-            "<li>React 公式ドキュメント</li>" +
-            "<li>UIインスピレーション: Dribbble, Awwwards</li>" +
-            "</ul>",
-        };
-
-        function setExpanded(key) {
-          buttons.forEach(function (btn) {
-            var k = btn.getAttribute("data-love");
-            btn.setAttribute("aria-expanded", k === key ? "true" : "false");
-            btn.classList.toggle("is-active", k === key);
-          });
-        }
-
-        function closePanel() {
-          activeKey = null;
-          panel.hidden = true;
-          panel.innerHTML = "";
-          setExpanded(null);
-        }
-
-        function openPanel(key) {
-          activeKey = key;
-          panel.innerHTML = LOVE_HTML[key] || "";
-          panel.hidden = false;
-          setExpanded(key);
-        }
-
-        buttons.forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            var key = btn.getAttribute("data-love");
-            if (activeKey === key) {
-              closePanel();
-              return;
-            }
-            openPanel(key);
-          });
-        });
-
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "Escape" && activeKey) closePanel();
-        });
-      })();
-    </script>
   </body>
 </html>
