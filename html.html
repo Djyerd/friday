@@ -4,14 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTML講座</title>
+    <link rel="stylesheet" href="common.css" />
   </head>
   <body>
-    <header>
-      <h1>HTML講座</h1>
+    <header class="site-header">
+      <h1 "site-title">HTML講座</h1>
     </header>
     <main>
       <article>
         <h1>HTMLの基本</h1>
+        <nav aria-label="目次">
+          <h2>目次</h2>
+          <ol>
+            <li><a href="#heading-tags">見出しタグ h1 ~ h6</a></li>
+            <li><a href="#paragraph-tag">pとは</a></li>
+            <li>
+              <a href="#list-tags">ul,ol,liとは</a>
+              <ol>
+                <li><a href="#unordered-list">ul: 順序のないリスト</a></li>
+                <li><a href="#ordered-list">ol: 順序のあるリスト</a></li>
+              </ol>
+            </li>
+            <li><a href="#definition-list">dl,dt,ddとは</a></li>
+            <li><a href="#em-strong">em, strong</a></li>
+            <li><a href="#div-span">div,spanとは</a></li>
+            <li><a href="#image-tag">画像を配置するタグ</a></li>
+            <li><a href="#anchor-tag">aとは</a></li>
+          </ol>
+        </nav>
         <p>
           HTMLはhyper text markup
           language（ハイパーテキストマークアップランゲージ）の略です。
@@ -22,21 +42,21 @@
         <p>seo対策のためだったり音声ブラウザの読み上げにも使用されます。</p>
 
         <section>
-          <h2>見出しタグ h1 ~ h6</h2>
+          <h2 id="heading-tags">見出しタグ h1 ~ h6</h2>
           <p>h1はページに一つ</p>
         </section>
 
         <section>
-          <h2>pとは</h2>
+          <h2 id="paragraph-tag">pとは</h2>
           <p>文章、段落を表すタグ</p>
         </section>
 
         <section>
-          <h2>ul,ol,liとは</h2>
+          <h2 id="list-tags">ul,ol,liとは</h2>
           <p>リストタグ</p>
 
           <section>
-            <h3>ul: 順序のないリスト</h3>
+            <h3 id="unordered-list">ul: 順序のないリスト</h3>
             <ul>
               <li>メニュー1</li>
               <li>メニュー2</li>
@@ -44,7 +64,7 @@
             </ul>
           </section>
           <section>
-            <h3>ol: 順序のあるリスト</h3>
+            <h3 id="ordered-list">ol: 順序のあるリスト</h3>
             <ol>
               <li>ランキング1</li>
               <li>ランキング2</li>
@@ -54,7 +74,7 @@
         </section>
 
         <section>
-          <h2>dl,dt,ddとは</h2>
+          <h2 id="definition-list">dl,dt,ddとは</h2>
 
           <p>定義付きリスト</p>
           <dl>
@@ -69,13 +89,13 @@
         </section>
 
         <section>
-          <h2>em, strong</h2>
+          <h2 id="em-strong">em, strong</h2>
           <p>em: <em>強調</em></p>
           <p>strong: <strong>重要</strong></p>
         </section>
 
         <section>
-          <h2>div,spanとは</h2>
+          <h2 id="div-span">div,spanとは</h2>
           <p>div: ブロック要素</p>
           <p>span: インライン要素</p>
 
@@ -86,14 +106,14 @@
           <div>spanの<span>テストです</span></div>
         </section>
         <section>
-          <h2>画像を配置するタグ</h2>
+          <h2 id="image-tag">画像を配置するタグ</h2>
           <p>img: 画像を配置するタグ</p>
           <p>
             <img src="https://placehold.co/600x400" alt="画像の説明" />
           </p>
         </section>
         <section>
-          <h2>aとは</h2>
+          <h2 id="anchor-tag">aとは</h2>
           <p>a: リンクを配置するタグ</p>
           <p>
             <a href="https://www.google.com">Google</a>
@@ -106,4 +126,3 @@
     </footer>
   </body>
 </html>
-
