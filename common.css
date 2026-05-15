@@ -52,4 +52,75 @@ body{
       }
     }
   }
-    
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ccc;
+  }
+  
+  * {
+  }
+  
+  .site-header {
+    background-color: #000;
+  }
+  
+  .site-title {
+    margin: 0;
+    padding: 16px;
+    color: #fff;
+    background-color: #000;
+  }
+  
+  .content-item {
+    background-color: #fff;
+    padding: 16px;
+    margin: 16px;
+    border-radius: 8px;
+  }
+  
+  .content-item-title {
+    margin: 16px 16px 8px 16px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .content-list {
+    background-color: #fff;
+    padding: 16px;
+    margin: 0 16px 16px 16px;
+    border-radius: 8px;
+  }
+  
+  .content-list-item {
+    list-style: none;
+    margin: 0;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  
+    /* .content-list-item a と同義 */
+    a {
+      padding: 4px;
+      display: list-item;
+      list-style-type: disc;
+  
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+  
+  .box {
+    margin: 10px;
+    width: 100px;
+    padding: 10px;
+    border: 10px solid red;
+  }
+  
+  .box.border-box {
+    box-sizing: border-box;
+  }
+  
